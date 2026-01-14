@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TriCycle Paradise</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="hero-page">
+<header class="site-header">
+    <nav class="navbar navbar--transparent">
+        <div class="nav-container">
+            <a href="index.html" class="logo-text">TRICYCLE</a>
+            <ul class="nav-menu nav-menu--hero">
+                <li><a href="products.html" class="nav-link">Shop</a></li>
+                <li><a href="special-offer.html" class="nav-link">Deals</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="login.html" class="nav-link" id="authLink">Login</a></li>
+                <li><button class="icon-button" aria-label="Search">🔍</button></li>
+                <li><button class="icon-button" aria-label="Cart">🛒</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero hero--video-look hero--compact hero--blurred">
+        <div class="hero-media">
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80"
+                 alt="Tricycle training" class="hero-bg-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <p class="hero-kicker">Login</p>
+                <h1 class="hero-heading">Welcome back, rider.</h1>
+                <p class="hero-subtitle">
+                    Pick up where you left off, finish your build, or track your latest order.
+                </p>
+            </div>
+        </div>
+    </section>
+</header>
+
+<main class="page-main auth-main">
+    <section class="auth-shell">
+        <div class="auth-card sleek-auth">
+            <h2>Log in</h2>
+            <form id="loginForm" class="stack-form">
+                <label>
+                    Username
+                    <input type="text" id="username" name="username" required>
+                </label>
+                <label>
+                    Password
+                    <input type="password" id="password" name="password" required>
+                </label>
+                <button type="submit" class="btn-primary btn-primary--solid">
+                    Continue
+                </button>
+                <p class="auth-message" id="loginMessage"></p>
+                <p class="auth-switch">
+                    New here?
+                    <a href="register.html">Create an account</a>
+                </p>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="footer footer--dark">
+    <p>&copy; 2026 TriCycle Paradise. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const message  = document.getElementById('loginMessage');
+
+        try {
+            const res  = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                message.textContent = data.message + ' Redirecting...';
+                message.className = 'auth-message success';
+                setTimeout(() => window.location.href = 'index.html', 1200);
+            } else {
+                message.textContent = data.message;
+                message.className = 'auth-message error';
+            }
+        } catch (err) {
+            message.textContent = 'Something went wrong. Please try again.';
+            message.className = 'auth-message error';
+        }
+    });
+</script>
+</body>
+</html>

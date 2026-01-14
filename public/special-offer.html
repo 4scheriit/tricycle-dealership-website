@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deals - TriCycle Paradise</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="hero-page">
+    <header class="site-header">
+        <nav class="navbar navbar--transparent">
+            <div class="nav-container">
+                <a href="index.html" class="logo-text">TRICYCLE</a>
+                <ul class="nav-menu nav-menu--hero">
+                    <li><a href="products.html" class="nav-link">Shop</a></li>
+                    <li><a href="special-offer.html" class="nav-link">Deals</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="register.html" class="nav-link">Register</a></li>
+                    <li><a href="login.html" class="nav-link" id="authLink">Login</a></li>
+                    <li><button class="icon-button" aria-label="Search">🔍</button></li>
+                    <li><button class="icon-button" aria-label="Cart">🛒</button></li>
+                </ul>
+            </div>
+        </nav>
+
+        <section class="hero hero--video-look hero--compact">
+            <div class="hero-media">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80"
+                    alt="Tricycle rider sprinting" class="hero-bg-image">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-inner">
+                <div class="hero-copy hero-copy--slide-in">
+                    <p class="hero-kicker">Developer Deal</p>
+                    <h1 class="hero-heading">
+                        <span class="hero-discount">50%</span> off your brand new tricycle.
+                    </h1>
+                    <p class="hero-subtitle">
+                        Answer one simple dev question and unlock our biggest discount of the season.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main class="page-main">
+        <section class="deals-section deals-section--wide">
+            <div class="container-narrow deals-inner">
+
+                <!-- Dev question card -->
+                <div class="deal-card reveal-on-scroll">
+                    <div class="deal-card-header">
+                        <span class="deal-pill">Exclusive Dev Offer</span>
+                        <h2 class="deal-title">Unlock 50% off with one line of CSS.</h2>
+                        <p class="deal-tagline">
+                            Answer the question below to claim your developer discount on any new tricycle.
+                        </p>
+                    </div>
+                    <div class="question-box sleek">
+                        <p class="question">How do you horizontally center a block-level element, such as a div?</p>
+                        <textarea id="answer" rows="5"
+                                placeholder="Answer"></textarea>
+                        <button class="btn-primary btn-primary--solid" onclick="checkAnswer()">Submit answer</button>
+                        <p id="result" class="deal-result"></p>
+                    </div>
+                </div>
+
+                <!-- Product rows -->
+                <div class="featured-list">
+
+                    <!-- Product 1 -->
+                    <article class="featured-product reveal-on-scroll" data-reveal-delay="1">
+                        <div class="featured-media">
+                            <img src="images/deals/deals_image_1.png"
+                                alt="Premium developer edition tricycle">
+                        </div>
+                        <div class="featured-copy">
+                            <h3>The Velorum Tricycle</h3>
+                            <p class="featured-price">
+                                <span class="old-price">$799.99</span>
+                                <span class="new-price">$399.99</span>
+                            </p>
+                            <p>
+                                Built for late-night cruising and early-morning rides, the <strong>Velorum Tricycle</strong> is crafted for families
+                                who expect more than “good enough.” Premium Italian leather, a precision-finished silver frame, and meticulously
+                                stitched padding come together in a ride that feels composed, quiet, and unmistakably elevated.
+                            </p>
+
+                            <p>
+                                Designed with practical luxury in mind, it offers discreet cargo space for snacks and essentials, a dedicated
+                                coffee-holder for Dad, and a clean, integrated charging hub for modern days on the move. Polished hardware, smooth
+                                steering, and a stable, confident stance make every trip feel intentional—whether it’s a quick errand or a sunset
+                                stroll.
+                            </p>
+                            <p>
+                                Because true luxury doesn’t shout. It arrives effortlessly, and it lasts.
+                            </p>
+                            <ul class="feature-list">
+                                <li>Long lasting, premium leather</li>
+                                <li>Pure silver frame</li>
+                                <li>USB‑C charging hub</li>
+                                <li>Overhead canopy</li>
+                            </ul>
+                            <button class="btn-primary btn-primary--ghost">Claim discount</button>
+                        </div>
+                    </article>
+
+                    <!-- Product 2 -->
+                    <article class="featured-product reveal-on-scroll" data-reveal-delay="2">
+                        <div class="featured-media">
+                            <img src="/images/deals/deals_image_2.png"
+                                alt="Electric cargo tricycle">
+                        </div>
+                        <div class="featured-copy">
+                            <h3>R-Series MK2 Tricycle</h3>
+                            <p class="featured-price">
+                                <span class="old-price">$1,499.99</span>
+                                <span class="new-price">$749.99</span>
+                            </p>
+                            <p>
+                                Built for errands. Overbuilt for ego. This electric tricycle hauls groceries, gear, and questionable life decisions with calm, unwavering confidence. Ride upright like a monarch surveying their kingdom. 
+                            </p>
+                            <ul class="feature-list">
+                                <li>Up to 340 kph</li>
+                                <li>Hydraulic disc brakes</li>
+                                <li>Integrated rear cargo box</li>
+                                <li>Front and rear LED lighting</li>
+                            </ul>
+                            <button class="btn-primary btn-primary--ghost">Claim discount</button>
+                        </div>
+                    </article>
+
+                    <!-- Product 3 -->
+                    <article class="featured-product reveal-on-scroll" data-reveal-delay="3">
+                        <div class="featured-media">
+                            <img src="/images/deals/deals_image_3.png"
+                                alt="Kids performance tricycle">
+                        </div>
+                        <div class="featured-copy">
+                            <h3>The Goliath F260</h3>
+                            <p class="featured-price">
+                                <span class="old-price">$249.99</span>
+                                <span class="new-price">$124.99</span>
+                            </p>
+                            <p>
+                                Built so tough we lost count of the wheels. Introducing the Goliath F260 tricycle, engineered with the kind of uncompromising attitude that screams, "I wear a size 2 shoe". It doesn’t ask permission. It shows up, it hauls, and it leaves a faint scent of glue and freedom. 
+                            </p>
+                            <ul class="feature-list">
+                                <li>Five-point stability platform</li>
+                                <li>Heavy-duty cargo box</li>
+                                <li>Quilted premium seat</li>
+                                <li>All-terrain tires</li>
+                            </ul>
+                            <button class="btn-primary btn-primary--ghost">Claim discount</button>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer footer--dark">
+        <p>&copy; 2026 TriCycle Paradise. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+        <script>
+        function checkAnswer() {
+            const raw = document.getElementById('answer').value || '';
+            const result = document.getElementById('result');
+
+            const a = raw
+            .toLowerCase()
+            .replace(/[\n\r\t]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+            const has = (re) => re.test(a);
+
+            // Only count actual width declarations (avoid border-width, outline-width, etc.)
+            const mentionsWidth = has(/(?:^|[^a-z-])(width|min-width|max-width)\s*:/);
+
+            // Margin auto centering
+            const marginAuto =
+            has(/margin\s*:\s*0\s*auto/) ||
+            has(/margin\s*:\s*auto/) ||
+            (has(/margin-left\s*:\s*auto/) && has(/margin-right\s*:\s*auto/)) ||
+            has(/margin-inline\s*:\s*auto/);
+
+            const marginAutoValid = marginAuto && mentionsWidth;
+
+            // Flexbox centering (parent)
+            const flexValid =
+            has(/display\s*:\s*flex/) &&
+            (has(/justify-content\s*:\s*center/) || has(/place-content\s*:\s*center/));
+
+            // Grid centering (parent)
+            const gridValid =
+            has(/display\s*:\s*grid/) &&
+            (has(/place-items\s*:\s*center/) || has(/justify-items\s*:\s*center/));
+
+            // Absolute centering (element)
+            const absoluteValid =
+            has(/position\s*:\s*absolute/) &&
+            has(/left\s*:\s*50%/) &&
+            (has(/transform\s*:\s*translatex\s*\(\s*-50%\s*\)/) ||
+            has(/transform\s*:\s*translate\s*\(\s*-50%\s*,\s*0\s*\)/));
+
+            const isCorrect = marginAutoValid || flexValid || gridValid || absoluteValid;
+
+            if (isCorrect) {
+            result.classList.remove('error');
+            result.classList.add('success');
+            result.textContent = 'Correct. Use code DEV50 at checkout for 50% off.';
+            } else {
+            result.classList.remove('success');
+            result.classList.add('error');
+            result.textContent =
+                'Not quite. Think parent layout vs. the element itself—centering is usually one of a few standard patterns.';
+            }
+        }
+    </script>
+</body>
+</html>

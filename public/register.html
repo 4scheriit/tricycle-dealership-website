@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TriCycle Paradise</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="hero-page">
+<header class="site-header">
+    <nav class="navbar navbar--transparent">
+        <div class="nav-container">
+            <a href="index.html" class="logo-text">TRICYCLE</a>
+            <ul class="nav-menu nav-menu--hero">
+                <li><a href="products.html" class="nav-link">Shop</a></li>
+                <li><a href="special-offer.html" class="nav-link">Deals</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="login.html" class="nav-link" id="authLink">Login</a></li>
+                <li><button class="icon-button" aria-label="Search">🔍</button></li>
+                <li><button class="icon-button" aria-label="Cart">🛒</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero hero--video-look hero--compact hero--blurred">
+        <div class="hero-media">
+            <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1600&q=80"
+                 alt="Tricycle showroom evening" class="hero-bg-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <p class="hero-kicker">Create account</p>
+                <h1 class="hero-heading">Ride with member-only perks.</h1>
+                <p class="hero-subtitle">
+                    Save builds, track orders, and unlock early access to our best sales.
+                </p>
+            </div>
+        </div>
+    </section>
+</header>
+
+<main class="page-main auth-main">
+    <section class="auth-shell">
+        <div class="auth-card sleek-auth">
+            <h2>Sign up</h2>
+            <form id="registerForm" class="stack-form">
+                <label>
+                    Username
+                    <input type="text" id="username" name="username" required>
+                </label>
+                <label>
+                    Email
+                    <input type="email" id="email" name="email" required>
+                </label>
+                <label>
+                    Password
+                    <input type="password" id="password" name="password" required>
+                </label>
+                <label>
+                    Confirm password
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </label>
+                <button type="submit" class="btn-primary btn-primary--solid">
+                    Create account
+                </button>
+                <p class="auth-message" id="registerMessage"></p>
+                <p class="auth-switch">
+                    Already have an account?
+                    <a href="login.html">Log in</a>
+                </p>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer class="footer footer--dark">
+    <p>&copy; 2026 TriCycle Paradise. All rights reserved.</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const username = document.getElementById('username').value;
+        const email    = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const confirm  = document.getElementById('confirmPassword').value;
+        const message  = document.getElementById('registerMessage');
+
+        if (password !== confirm) {
+            message.textContent = 'Passwords do not match.';
+            message.className = 'auth-message error';
+            return;
+        }
+
+        try {
+            const res  = await fetch('/api/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, email, password })
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                message.textContent = data.message + ' Redirecting...';
+                message.className = 'auth-message success';
+                setTimeout(() => window.location.href = 'login.html', 1500);
+            } else {
+                message.textContent = data.message;
+                message.className = 'auth-message error';
+            }
+        } catch (err) {
+            message.textContent = 'Something went wrong. Please try again.';
+            message.className = 'auth-message error';
+        }
+    });
+</script>
+</body>
+</html>
