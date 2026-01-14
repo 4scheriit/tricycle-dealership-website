@@ -69,3 +69,33 @@ tricycle-dealership/
     └── js/
         └── main.js        # Auth status, scroll reveal, timeline logic
 ```
+
+## Run Instructions (VS Code)
+
+### Requirements
+
+- **Node.js (LTS recommended)**
+- **VS Code**
+
+### Steps
+
+1. **Download/clone** this repository to your computer.
+2. Open **VS Code**.
+3. Go to **File → Open Folder...** and select the project folder (the folder that contains `package.json`).
+4. Open the VS Code terminal: **View → Terminal**.
+5. Install dependencies:
+   ```bash
+   npm install
+   ```
+6. Start the server (try this first):
+   ```bash
+   npm start
+   ```
+   If `npm start` fails (example: “missing script: start”), run:
+   ```bash
+   node server.js
+   ```
+7. Open your browser and visit:
+   - `http://localhost:3000`
+
+> If the terminal prints a different port (example: `3001`), use that port instead.
