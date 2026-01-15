@@ -1,4 +1,7 @@
-/* ===== Reset & Base ===== */
+/* ==========================================================================
+   Base reset & page shell
+   ========================================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +20,7 @@ body {
     background: #000;
 }
 
-/* ===== Layout Helpers ===== */
+/* Layout containers */
 
 .hero-page {
     display: flex;
@@ -42,7 +45,9 @@ body {
     padding: 3rem 2.5rem 3.5rem;
 }
 
-/* ===== Navigation ===== */
+/* ==========================================================================
+   Main navigation
+   ========================================================================== */
 
 .navbar {
     width: 100%;
@@ -130,7 +135,9 @@ body {
     opacity: 0.9;
 }
 
-/* ===== Hero Section (shared) ===== */
+/* ==========================================================================
+   Hero sections (shared)
+   ========================================================================== */
 
 .hero {
     position: relative;
@@ -148,11 +155,6 @@ body {
     position: absolute;
     inset: 0;
     z-index: 0;
-}
-
-.hero-discount {
-    display: inline-block;
-    animation: discountPulse 2.2s ease-in-out 3;
 }
 
 .hero-bg-image {
@@ -184,7 +186,8 @@ body {
     max-width: 520px;
 }
 
-/* hero text slide-in on page load */
+/* Hero text animation */
+
 .hero-copy--slide-in {
     opacity: 0;
     transform: translateX(-40px);
@@ -228,7 +231,16 @@ body {
     color: #cccccc;
 }
 
-/* ===== Buttons ===== */
+/* Discount highlight */
+
+.hero-discount {
+    display: inline-block;
+    animation: discountPulse 2.2s ease-in-out 3;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
 
 .btn-primary {
     display: inline-flex;
@@ -273,7 +285,19 @@ body {
     border-color: #ffffff;
 }
 
-/* ===== Home Secondary Section ===== */
+/* Small CTA variant for product cards */
+
+.btn-primary--small {
+    padding: 0.55rem 1.4rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+}
+
+/* ==========================================================================
+   Home page sections
+   ========================================================================== */
+
+/* Secondary collection strip */
 
 .home-secondary {
     background: #ffffff;
@@ -316,7 +340,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* Home highlight + story + CTA */
+/* Highlight, story teaser & CTA */
 
 .home-highlight {
     padding: 3.5rem 0 4rem;
@@ -397,7 +421,9 @@ body {
     gap: 0.9rem;
 }
 
-/* ===== Shop / product grid ===== */
+/* ==========================================================================
+   Shop / product grid
+   ========================================================================== */
 
 .shop-section {
     padding: 3.5rem 0 4.5rem;
@@ -429,7 +455,7 @@ body {
     gap: 1.9rem;
 }
 
-/* Product card v2 */
+/* Product card */
 
 .product-card-v2 {
     position: relative;
@@ -437,8 +463,7 @@ body {
     overflow: hidden;
     background: radial-gradient(circle at top left, #020617 0, #020617 50%, #020617);
     border: 1px solid rgba(31, 41, 55, 0.9);
-    box-shadow:
-        0 24px 55px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.9);
     display: flex;
     flex-direction: column;
     transition:
@@ -449,12 +474,11 @@ body {
 
 .product-card-v2:hover {
     transform: translateY(-6px);
-    box-shadow:
-        0 32px 80px rgba(0, 0, 0, 0.95);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.95);
     border-color: rgba(148, 163, 184, 0.9);
 }
 
-/* media */
+/* Product media */
 
 .product-media {
     position: relative;
@@ -473,7 +497,7 @@ body {
     transform: scale(1.08);
 }
 
-/* small pill tag */
+/* Product tag */
 
 .product-tag {
     position: absolute;
@@ -494,7 +518,7 @@ body {
     border-color: transparent;
 }
 
-/* body */
+/* Product body */
 
 .product-body {
     padding: 1.4rem 1.4rem 1.5rem;
@@ -525,7 +549,7 @@ body {
     margin-top: 0.15rem;
 }
 
-/* footer */
+/* Product footer */
 
 .product-footer {
     margin-top: 0.6rem;
@@ -553,16 +577,9 @@ body {
     color: #4ade80;
 }
 
-/* smaller CTA button for cards */
-
-.btn-primary--small {
-    padding: 0.55rem 1.4rem;
-    font-size: 0.75rem;
-    letter-spacing: 0.16em;
-}
-
-
-/* ===== Deals / Special Offer ===== */
+/* ==========================================================================
+   Deals / special offer page
+   ========================================================================== */
 
 .deals-section--wide .deals-inner {
     max-width: 1400px;
@@ -570,6 +587,8 @@ body {
     padding-top: 3.5rem;
     padding-bottom: 4rem;
 }
+
+/* Dev offer header */
 
 .deal-card-header {
     margin-bottom: 1.6rem;
@@ -609,13 +628,7 @@ body {
     color: #facc15;
 }
 
-.deal-tagline {
-    margin: 0.4rem 0 0.4rem;
-    font-size: 0.9rem;
-    color: #cbd5f5;
-    text-transform: none;
-    letter-spacing: 0.03em;
-}
+/* Dev question card */
 
 .deal-card {
     position: relative;
@@ -629,7 +642,6 @@ body {
     overflow: hidden;
 }
 
-/* soft edge highlight */
 .deal-card::before {
     content: "";
     position: absolute;
@@ -637,6 +649,10 @@ body {
     border-radius: inherit;
     border: 1px solid rgba(255, 255, 255, 0.04);
     pointer-events: none;
+}
+
+.deal-card h2 {
+    font-size: 1.5rem;
 }
 
 .deal-card .btn-primary--solid {
@@ -651,10 +667,6 @@ body {
 
 .deal-card .btn-primary--solid:hover {
     background: #f9fafb;
-}
-
-.deal-card h2 {
-    font-size: 1.5rem;
 }
 
 .deal-tagline {
@@ -673,6 +685,8 @@ body {
     font-size: 1.1rem;
     font-weight: 600;
 }
+
+/* Dev answer panel */
 
 .question-box.sleek {
     margin-top: 1.6rem;
@@ -728,18 +742,20 @@ body {
     color: #fb7185;
 }
 
-.featured-product {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 2.4rem; 
-    align-items: stretch;
-}
+/* Featured deal rows */
 
 .featured-list {
     display: flex;
     flex-direction: column;
     gap: 3.25rem;
     margin-top: 2.5rem;
+}
+
+.featured-product {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 2.4rem;
+    align-items: stretch;
 }
 
 .featured-media img {
@@ -785,7 +801,9 @@ body {
     font-size: 0.95rem;
 }
 
-/* ===== Deals scroll reveal ===== */
+/* ==========================================================================
+   Shared scroll reveal helper
+   ========================================================================== */
 
 .reveal-on-scroll {
     opacity: 0;
@@ -806,8 +824,9 @@ body {
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.65);
 }
 
-
-/* ===== Gallery ===== */
+/* ==========================================================================
+   Gallery page
+   ========================================================================== */
 
 .gallery-section {
     padding: 3rem 0 3.5rem;
@@ -838,7 +857,9 @@ body {
     font-size: 0.95rem;
 }
 
-/* ===== About ===== */
+/* ==========================================================================
+   About page story timeline
+   ========================================================================== */
 
 .about-section {
     padding: 4rem 0 4.5rem;
@@ -853,8 +874,7 @@ body {
     background: radial-gradient(circle at top left, #020617 0, #020617 45%, #020617);
     border-radius: 30px;
     padding: 3rem 3rem 3.2rem;
-    box-shadow:
-        0 40px 120px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.9);
     border: 1px solid rgba(148, 163, 184, 0.25);
 }
 
@@ -902,7 +922,7 @@ body {
     color: #cbd5f5;
 }
 
-/* layout */
+/* Story layout */
 
 .story-layout {
     display: grid;
@@ -962,12 +982,12 @@ body {
         0 0 0 1px rgba(15, 23, 42, 1);
 }
 
-/* right side card */
+/* Story panel */
 
 .story-panel {
     position: relative;
-    min-height: 260px;     
-    overflow: hidden;       
+    min-height: 260px;
+    overflow: hidden;
 }
 
 .story-card {
@@ -1008,7 +1028,9 @@ body {
     pointer-events: auto;
 }
 
-/* ===== Contact ===== */
+/* ==========================================================================
+   Contact page & shared stacked forms
+   ========================================================================== */
 
 .contact-shell {
     padding: 3rem 2.5rem 3.5rem;
@@ -1044,7 +1066,8 @@ body {
     color: #cbd5f5;
 }
 
-/* shared stacked form styles (contact + auth) */
+/* Shared stacked form (contact + auth) */
+
 .stack-form {
     display: flex;
     flex-direction: column;
@@ -1068,7 +1091,9 @@ body {
     color: #f9fafb;
 }
 
-/* ===== Auth (Register & Login) ===== */
+/* ==========================================================================
+   Auth pages (register & login)
+   ========================================================================== */
 
 .auth-main {
     background: radial-gradient(circle at top, #0b1120 0, #020617 55%, #000 100%);
@@ -1114,7 +1139,9 @@ body {
     text-decoration: underline;
 }
 
-/* ===== Footer ===== */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 
 .footer {
     text-align: center;
@@ -1126,6 +1153,10 @@ body {
     background: #050814;
     color: #d0d4df;
 }
+
+/* ==========================================================================
+   Global effects & animations
+   ========================================================================== */
 
 @view-transition {
     navigation: auto;
@@ -1151,17 +1182,20 @@ body {
         color: #ffffff;
     }
     40% {
-        color: #f97373;      
+        color: #f97373;
     }
     60% {
-        color: #ef4444;     
+        color: #ef4444;
     }
     100% {
         color: #ffffff;
     }
 }
 
-/* ===== Responsive ===== */
+/* ==========================================================================
+   Responsive adjustments
+   ========================================================================== */
+
 @media (max-width: 900px) {
     .nav-container {
         padding-inline: 1.25rem;
@@ -1206,6 +1240,7 @@ body {
     .featured-list {
         gap: 2.75rem;
     }
+
     .story-layout {
         grid-template-columns: 1fr;
         gap: 1.6rem;
@@ -1219,7 +1254,6 @@ body {
         position: relative;
     }
 }
-
 
 @media (max-width: 768px) {
     .shop-shell {
