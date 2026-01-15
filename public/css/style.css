@@ -196,7 +196,7 @@ body {
 }
 
 .hero-kicker {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 1rem;
@@ -211,7 +211,7 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 0.95rem;
+    font-size: 1.2rem;
     max-width: 340px;
     color: #f0f0f0;
     margin-bottom: 1.8rem;
