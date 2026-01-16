@@ -1094,6 +1094,18 @@ body.hero-page {
   transform: rotateY(180deg);
 }
 
+.gallery-track {
+  position: relative;
+}
+
+.gallery-track-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
 .gallery-face {
   position: absolute;
   inset: 0;
