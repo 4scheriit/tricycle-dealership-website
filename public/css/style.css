@@ -372,11 +372,15 @@ body {
     grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
     gap: 2.4rem;
     align-items: center;
+    position: relative;
+    border-radius: 1.5rem;   /* curve size */
+    overflow: hidden;
 }
 
-.home-story-copy h2 {
-    font-size: 1.6rem;
-    margin: 0.6rem 0 0.6rem;
+.home-story-copy {
+  max-width: 34rem;
+  margin-left: 0.1rem;
+  padding: 2rem 3rem;
 }
 
 .home-story-copy p {
@@ -828,7 +832,6 @@ body {
    Gallery page
    ========================================================================== */
 
-/* background image + darkening */
 .lux-hero-bg {
   position: absolute;
   inset: 0;
@@ -850,7 +853,6 @@ body {
     linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.98));
 }
 
-/* make the rest of the page match the hero tone – this page only */
 body.hero-page {
   background: #10172a;
   color: #f9fafb;
@@ -859,8 +861,6 @@ body.hero-page {
 .page-main {
   background: transparent;
 }
-
-/* inner hero content */
 
 .lux-hero {
   position: relative;
@@ -879,7 +879,6 @@ body.hero-page {
   box-sizing: border-box;
 }
 
-/* massive LU behind image */
 .lux-word-back {
   position: absolute;
   top: -5%;
@@ -894,7 +893,6 @@ body.hero-page {
   pointer-events: none;
 }
 
-/* floating image cluster */
 .lux-image-cluster {
   position: relative;
   width: min(640px, 78vw);
@@ -912,7 +910,6 @@ body.hero-page {
   object-fit: cover;
 }
 
-/* XURY over the image, pushed right */
 .lux-word-front {
   position: absolute;
   top: 4%;
@@ -922,7 +919,7 @@ body.hero-page {
   font-weight: 700;
   font-size: clamp(40rem, 12vw, 7rem);
   letter-spacing: 0.001em;
-  color: rgba(248, 250, 252, 0.9);
+  color: rgba(248, 250, 252, 0.354);
   text-transform: uppercase;
   white-space: nowrap;
   pointer-events: none;
@@ -933,7 +930,6 @@ body.hero-page {
   margin-right: 0.1em;
 }
 
-/* caption over image bottom */
 .lux-image-caption {
   position: absolute;
   left: 0;
@@ -961,8 +957,6 @@ body.hero-page {
   font-size: 0.9rem;
   color: #d1d5db;
 }
-
-/* scroll cue */
 
 .lux-scroll {
   position: absolute;
@@ -1002,30 +996,27 @@ body.hero-page {
   color: #e5e7eb;
 }
 
-/* bottom-right copy */
-
 .lux-bottom-copy {
   position: absolute;
   right: 2.5rem;
   bottom: 2.5rem;
-  max-width: 260px;
+  max-width: 360px;
   font-size: 0.92rem;
 }
 
 .lux-bottom-eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   color: #9ca3af;
   margin-bottom: 0.4rem;
 }
 
 .lux-bottom-body {
+  font-size: 1.1rem;
   color: #e5e7eb;
   line-height: 1.5;
 }
-
-/* scroll indicator animation */
 
 @keyframes lux-scroll-pulse {
   0% {
@@ -1041,8 +1032,6 @@ body.hero-page {
   }
 }
 
-/* ---- Scroll gallery: large, staggered flip cards IN FLOW ---- */
-
 .gallery-followup {
   padding: 5rem 2.5rem 6rem;
   max-width: 1200px;
@@ -1050,49 +1039,58 @@ body.hero-page {
 }
 
 .gallery-followup h2 {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
   margin-bottom: 0.5rem;
 }
 
 .gallery-followup p {
+  margin-bottom: 10rem;
   color: #9ca3af;
   max-width: 640px;
 }
 
-/* one card per row, stacked */
+.gallery-followup.container {
+  max-width: 1400px;    
+  margin: 0 auto;
+}
+
 .gallery-cloud {
   margin-top: 4rem;
   display: flex;
   flex-direction: column;
-  gap: 8rem;
+  gap: 15rem;
 }
 
-/* base card style – large */
 .gallery-card {
   position: relative;
-  width: 840px;          /* card width */
+  width: 840px;
   height: 520px;
   cursor: pointer;
-  transform-style: preserve-3d;
-  transition:
-    transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1),
-    margin-left 0.3s ease;
+  margin-left: calc((100% - 840px) / 2);
 }
 
-/* center baseline */
 .gallery-card {
   margin-left: calc((100% - 420px) / 2);
 }
 
-/* stagger horizontally by row */
 .gallery-card:nth-child(2n) {
-  margin-left: 2%;                    /* push left */
+  margin-left: -25%;
 }
 
 .gallery-card:nth-child(3n) {
-  margin-left: calc(100% - 420px - 2%); /* push right */
+  margin-left: calc(100% - 420px - 2%);
 }
 
-.gallery-card:hover {
+.gallery-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.gallery-card:hover .gallery-card-inner {
   transform: rotateY(180deg);
 }
 
@@ -1112,22 +1110,63 @@ body.hero-page {
   display: block;
 }
 
-/* back face */
 .gallery-face--back {
   transform: rotateY(180deg);
 }
 
-/* responsive tweaks */
+.gallery-face--back {
+  transform: rotateY(180deg);
+  position: relative;
+}
+
+.gallery-face--back::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0.96) 0%,
+    rgba(15, 23, 42, 0.96) 15%,
+    rgba(15, 23, 42, 0.0) 80%
+  );
+  pointer-events: none;
+}
+
+.gallery-back-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  top: 70%;
+  padding: 0.9rem 2.5rem 1.1rem;
+  color: #f9fafb;
+}
+
+.gallery-back-title {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin: 0 0 0.4rem;
+  color: #e5e7eb;
+}
+
+.gallery-back-name {
+  font-size: 1.9rem;
+  font-weight: 600;
+  margin: 0;
+  color: #f9fafb;
+}
+
 @media (max-width: 900px) {
   .gallery-card {
     width: 80vw;
     height: 230px;
-    margin-left: 10vw;          /* centered */
+    margin-left: 10vw;
   }
 
   .gallery-card:nth-child(2n),
   .gallery-card:nth-child(3n) {
-    margin-left: 10vw;          /* reduce staggering on small screens */
+    margin-left: 10vw;
   }
 }
 
