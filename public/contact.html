@@ -1,104 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - TriCycle Paradise</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - TriCycle Paradise</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="hero-page">
-<header class="site-header">
+
+<body class="hero-page page--contact">
+  <header class="site-header">
     <nav class="navbar navbar--transparent">
-        <div class="nav-container">
-            <a href="index.html" class="logo-text">TRICYCLE</a>
-            <ul class="nav-menu nav-menu--hero">
-                <li><a href="products.html" class="nav-link">Shop</a></li>
-                <li><a href="special-offer.html" class="nav-link">Deals</a></li>
-                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="register.html" class="nav-link">Register</a></li>
-                <li><a href="login.html" class="nav-link" id="authLink">Login</a></li>
-                <li><button class="icon-button" aria-label="Search">🔍</button></li>
-                <li><button class="icon-button" aria-label="Cart">🛒</button></li>
-            </ul>
-        </div>
+      <div class="nav-container">
+        <a href="index.html" class="logo-text">TRICYCLE</a>
+
+        <ul class="nav-menu nav-menu--hero">
+          <li><a href="products.html" class="nav-link">Shop</a></li>
+          <li><a href="special-offer.html" class="nav-link">Deals</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="register.html" class="nav-link">Register</a></li>
+          <li><a href="login.html" class="nav-link" id="authLink">Login</a></li>
+          <li><button class="icon-button" aria-label="Search">🔍</button></li>
+          <li><button class="icon-button" aria-label="Cart">🛒</button></li>
+        </ul>
+      </div>
     </nav>
 
-    <section class="hero hero--video-look hero--compact">
-        <div class="hero-media">
-            <img src="https://images.unsplash.com/photo-1533101681375-1b30b358e5b4?auto=format&fit=crop&w=1600&q=80"
-                 alt="Showroom" class="hero-bg-image">
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="hero-inner">
-            <div class="hero-copy">
-                <p class="hero-kicker">Contact</p>
-                <h1 class="hero-heading">Let’s talk tricycles.</h1>
-                <p class="hero-subtitle">
-                    Have a question about sizing, range, or cargo setups? Drop a line and we’ll help you dial it in.
-                </p>
-            </div>
-        </div>
-    </section>
-</header>
+    <!-- HERO -->
+    <section class="hero hero--video-look hero--contact">
+      <div class="hero-media">
+        <img
+          src="/images/contact/contact_hero_1.png"
+          alt="TriCycle showroom ambience"
+          class="hero-bg-image"
+        />
+        <div class="hero-overlay"></div>
+      </div>
 
-<main class="page-main">
-    <section class="contact-shell container">
-        <div class="contact-layout">
-            <div class="contact-card contact-card--form">
-                <h2>Send a message</h2>
-                <form id="contactForm" class="stack-form">
-                    <label>
-                        Name
-                        <input type="text" required>
-                    </label>
-                    <label>
-                        Email
-                        <input type="email" required>
-                    </label>
-                    <label>
-                        Subject
-                        <input type="text" required>
-                    </label>
-                    <label>
-                        Message
-                        <textarea rows="5" required></textarea>
-                    </label>
-                    <button type="submit" class="btn-primary btn-primary--solid">
-                        Send message
-                    </button>
-                </form>
-            </div>
-            <div class="contact-card contact-card--info">
-                <h3>Showroom</h3>
-                <p>
-                    123 Tricycle Lane<br>
-                    Calgary, AB T2P 1J9<br>
-                    Canada
-                </p>
+      <div class="hero-inner">
+        <div class="contact-shell container">
+          <!-- Left: Headline + quick actions -->
+          <div class="contact-intro">
+            <p class="contact-kicker">Contact</p>
+            <h1 class="contact-title">Let’s talk tricycles.</h1>
+            <p class="contact-subtitle">
+              Sizing, electric range, cargo setups, or custom builds — send a message and we’ll help you dial it in.
+            </p>
 
-                <h3>Hours</h3>
-                <p>
-                    Mon–Fri: 9am – 6pm<br>
-                    Sat: 10am – 5pm<br>
+            <div class="contact-chips" aria-label="Quick contact options">
+              <a class="contact-chip" href="mailto:hello@tricycleparadise.com">
+                <span class="chip-icon" aria-hidden="true">✉️</span>
+                <span class="chip-text">
+                  <span class="chip-label">Email</span>
+                  <span class="chip-value">hello@tricycleparadise.com</span>
+                </span>
+              </a>
+
+              <a class="contact-chip" href="tel:+14035558745">
+                <span class="chip-icon" aria-hidden="true">📞</span>
+                <span class="chip-text">
+                  <span class="chip-label">Phone</span>
+                  <span class="chip-value">(403) 555-TRIKE</span>
+                </span>
+              </a>
+
+              <div class="contact-chip contact-chip--muted" role="note">
+                <span class="chip-icon" aria-hidden="true">⏱️</span>
+                <span class="chip-text">
+                  <span class="chip-label">Typical response</span>
+                  <span class="chip-value">Within 1 business day</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Cards -->
+          <div class="contact-panels">
+            <!-- Form card -->
+            <section class="contact-card contact-card--form" aria-labelledby="contactFormTitle">
+              <div class="card-head">
+                <h2 id="contactFormTitle">Send a message</h2>
+                <p class="card-sub">
+                  Tell us what you’re building. The more detail, the better our recommendation.
+                </p>
+              </div>
+
+              <form id="contactForm" class="contact-form" autocomplete="on">
+                <div class="form-row">
+                  <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" autocomplete="name" required />
+                  </div>
+
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="subject">Subject</label>
+                  <input id="subject" name="subject" type="text" required />
+                </div>
+
+                <div class="field">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" rows="5" required
+                    placeholder="Example: I’m 6'0, looking for an electric trike for hills + groceries. What range should I expect in winter?"></textarea>
+                </div>
+
+                <div class="form-actions">
+                  <button type="submit" class="btn-primary btn-primary--solid contact-submit">
+                    Send message
+                  </button>
+                  <p class="fineprint">
+                    By sending, you agree we can reply via email. No spam, ever.
+                  </p>
+                </div>
+              </form>
+            </section>
+
+            <!-- Info card -->
+            <aside class="contact-card contact-card--info" aria-label="Showroom information">
+              <h3>Showroom</h3>
+              <p class="info-block">
+                123 Tricycle Lane<br />
+                Calgary, AB T2P 1J9<br />
+                Canada
+              </p>
+
+              <div class="info-split">
+                <div>
+                  <h3>Hours</h3>
+                  <p class="info-block">
+                    Mon–Fri: 9am – 6pm<br />
+                    Sat: 10am – 5pm<br />
                     Sun: 12pm – 4pm
-                </p>
+                  </p>
+                </div>
 
-                <h3>Contact</h3>
-                <p>
-                    Phone: (403) 555‑TRIKE<br>
-                    Email: hello@tricycleparadise.com
-                </p>
-            </div>
+                <div>
+                  <h3>Direct</h3>
+                  <p class="info-block">
+                    <a href="tel:+14035558745" class="info-link">(403) 555-TRIKE</a><br />
+                    <a href="mailto:hello@tricycleparadise.com" class="info-link">hello@tricycleparadise.com</a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="info-divider" role="separator" aria-hidden="true"></div>
+
+              <div class="info-cta">
+                <p class="info-cta-title">Want a fitting?</p>
+                <p class="info-cta-sub">We’ll match your build to your posture and riding style.</p>
+                <a href="contact.html#contactForm" class="btn-primary btn-primary--ghost btn-primary--small">
+                  Book a fitting
+                </a>
+              </div>
+            </aside>
+          </div>
         </div>
+      </div>
     </section>
-</main>
+  </header>
 
-<footer class="footer footer--dark">
+  <footer class="footer footer--dark">
     <p>&copy; 2026 TriCycle Paradise. All rights reserved.</p>
-</footer>
+  </footer>
 
-<script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

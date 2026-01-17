@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="hero-page">
+<body class="hero-page page--deals">
     <header class="site-header">
         <nav class="navbar navbar--transparent">
             <div class="nav-container">
@@ -30,7 +29,7 @@
         <section class="hero hero--video-look hero--compact">
             <div class="hero-media">
                 <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1600&q=80"
-                    alt="Tricycle rider sprinting" class="hero-bg-image">
+                     alt="Tricycle rider sprinting" class="hero-bg-image">
                 <div class="hero-overlay"></div>
             </div>
             <div class="hero-inner">
@@ -48,7 +47,7 @@
     </header>
 
     <main class="page-main">
-        <section class="deals-section deals-section--wide">
+        <section id="dev-discount" class="deals-section deals-section--wide">
             <div class="container-narrow deals-inner">
 
                 <!-- Dev question card -->
@@ -60,10 +59,10 @@
                             Answer the question below to claim your developer discount on any new tricycle.
                         </p>
                     </div>
+
                     <div class="question-box sleek">
                         <p class="question">How do you horizontally center a block-level element, such as a div?</p>
-                        <textarea id="answer" rows="5"
-                                placeholder="Answer"></textarea>
+                        <textarea id="answer" rows="5" placeholder="Answer"></textarea>
                         <button class="btn-primary btn-primary--solid" onclick="checkAnswer()">Submit answer</button>
                         <p id="result" class="deal-result"></p>
                     </div>
@@ -75,8 +74,7 @@
                     <!-- Product 1 -->
                     <article class="featured-product reveal-on-scroll" data-reveal-delay="1">
                         <div class="featured-media">
-                            <img src="images/deals/deals_image_1.png"
-                                alt="Premium developer edition tricycle">
+                            <img src="/images/deals/deals_image_1.png" alt="Premium developer edition tricycle">
                         </div>
                         <div class="featured-copy">
                             <h3>The Velorum Tricycle</h3>
@@ -89,7 +87,6 @@
                                 who expect more than “good enough.” Premium Italian leather, a precision-finished silver frame, and meticulously
                                 stitched padding come together in a ride that feels composed, quiet, and unmistakably elevated.
                             </p>
-
                             <p>
                                 Designed with practical luxury in mind, it offers discreet cargo space for snacks and essentials, a dedicated
                                 coffee-holder for Dad, and a clean, integrated charging hub for modern days on the move. Polished hardware, smooth
@@ -102,7 +99,7 @@
                             <ul class="feature-list">
                                 <li>Long lasting, premium leather</li>
                                 <li>Pure silver frame</li>
-                                <li>USB‑C charging hub</li>
+                                <li>USB-C charging hub</li>
                                 <li>Overhead canopy</li>
                             </ul>
                             <button class="btn-primary btn-primary--ghost">Claim discount</button>
@@ -112,8 +109,7 @@
                     <!-- Product 2 -->
                     <article class="featured-product reveal-on-scroll" data-reveal-delay="2">
                         <div class="featured-media">
-                            <img src="/images/deals/deals_image_2.png"
-                                alt="Electric cargo tricycle">
+                            <img src="/images/deals/deals_image_2.png" alt="Electric cargo tricycle">
                         </div>
                         <div class="featured-copy">
                             <h3>R-Series MK2 Tricycle</h3>
@@ -122,7 +118,7 @@
                                 <span class="new-price">$749.99</span>
                             </p>
                             <p>
-                                Built for errands. Overbuilt for ego. This electric tricycle hauls groceries, gear, and questionable life decisions with calm, unwavering confidence. Ride upright like a monarch surveying their kingdom. 
+                                Built for errands. Overbuilt for ego. This electric tricycle hauls groceries, gear, and questionable life decisions with calm, unwavering confidence. Ride upright like a monarch surveying their kingdom.
                             </p>
                             <ul class="feature-list">
                                 <li>Up to 340 kph</li>
@@ -137,8 +133,7 @@
                     <!-- Product 3 -->
                     <article class="featured-product reveal-on-scroll" data-reveal-delay="3">
                         <div class="featured-media">
-                            <img src="/images/deals/deals_image_3.png"
-                                alt="Kids performance tricycle">
+                            <img src="/images/deals/deals_image_3.png" alt="Kids performance tricycle">
                         </div>
                         <div class="featured-copy">
                             <h3>The Goliath F260</h3>
@@ -147,7 +142,7 @@
                                 <span class="new-price">$124.99</span>
                             </p>
                             <p>
-                                Built so tough we lost count of the wheels. Introducing the Goliath F260 tricycle, engineered with the kind of uncompromising attitude that screams, "I wear a size 2 shoe". It doesn’t ask permission. It shows up, it hauls, and it leaves a faint scent of glue and freedom. 
+                                Built so tough we lost count of the wheels. Introducing the Goliath F260 tricycle, engineered with the kind of uncompromising attitude that screams, "I wear a size 2 shoe". It doesn’t ask permission. It shows up, it hauls, and it leaves a faint scent of glue and freedom.
                             </p>
                             <ul class="feature-list">
                                 <li>Five-point stability platform</li>
@@ -169,58 +164,67 @@
     </footer>
 
     <script src="js/main.js"></script>
-        <script>
+
+    <script>
         function checkAnswer() {
             const raw = document.getElementById('answer').value || '';
             const result = document.getElementById('result');
 
             const a = raw
-            .toLowerCase()
-            .replace(/[\n\r\t]/g, ' ')
-            .replace(/\s+/g, ' ')
-            .trim();
+                .toLowerCase()
+                .replace(/[\n\r\t]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
 
             const has = (re) => re.test(a);
 
-            // Only count actual width declarations (avoid border-width, outline-width, etc.)
             const mentionsWidth = has(/(?:^|[^a-z-])(width|min-width|max-width)\s*:/);
 
-            // Margin auto centering
+            // Margin auto centering (element itself)
             const marginAuto =
-            has(/margin\s*:\s*0\s*auto/) ||
-            has(/margin\s*:\s*auto/) ||
-            (has(/margin-left\s*:\s*auto/) && has(/margin-right\s*:\s*auto/)) ||
-            has(/margin-inline\s*:\s*auto/);
+                has(/margin\s*:\s*0\s*auto/) ||
+                has(/margin\s*:\s*auto/) ||
+                (has(/margin-left\s*:\s*auto/) && has(/margin-right\s*:\s*auto/)) ||
+                has(/margin-inline\s*:\s*auto/);
 
-            const marginAutoValid = marginAuto && mentionsWidth;
+            const marginAutoValid = marginAuto;
 
             // Flexbox centering (parent)
             const flexValid =
-            has(/display\s*:\s*flex/) &&
-            (has(/justify-content\s*:\s*center/) || has(/place-content\s*:\s*center/));
+                has(/display\s*:\s*flex/) &&
+                (has(/justify-content\s*:\s*center/) || has(/place-content\s*:\s*center/));
 
             // Grid centering (parent)
             const gridValid =
-            has(/display\s*:\s*grid/) &&
-            (has(/place-items\s*:\s*center/) || has(/justify-items\s*:\s*center/));
+                has(/display\s*:\s*grid/) &&
+                (has(/place-items\s*:\s*center/) ||
+                has(/justify-items\s*:\s*center/) ||
+                has(/justify-content\s*:\s*center/));
 
             // Absolute centering (element)
             const absoluteValid =
-            has(/position\s*:\s*absolute/) &&
-            has(/left\s*:\s*50%/) &&
-            (has(/transform\s*:\s*translatex\s*\(\s*-50%\s*\)/) ||
-            has(/transform\s*:\s*translate\s*\(\s*-50%\s*,\s*0\s*\)/));
+                has(/position\s*:\s*absolute/) &&
+                has(/left\s*:\s*50%/) &&
+                (has(/transform\s*:\s*translatex\s*\(\s*-50%\s*\)/) ||
+                has(/transform\s*:\s*translate\s*\(\s*-50%\s*,\s*0\s*\)/) ||
+                has(/transform\s*:\s*translate\s*\(\s*-50%\s*,\s*-50%\s*\)/));
 
             const isCorrect = marginAutoValid || flexValid || gridValid || absoluteValid;
 
             if (isCorrect) {
-            result.classList.remove('error');
-            result.classList.add('success');
-            result.textContent = 'Correct. Use code DEV50 at checkout for 50% off.';
+                result.classList.remove('error');
+                result.classList.add('success');
+
+                if (marginAuto && !mentionsWidth) {
+                result.textContent =
+                    "Correct. (Tip: margin: 0 auto usually needs a width/max-width to actually center.) Use code DEV50 at checkout for 50% off.";
+                } else {
+                result.textContent = 'Correct. Use code DEV50 at checkout for 50% off.';
+                }
             } else {
-            result.classList.remove('success');
-            result.classList.add('error');
-            result.textContent =
+                result.classList.remove('success');
+                result.classList.add('error');
+                result.textContent =
                 'Not quite. Think parent layout vs. the element itself—centering is usually one of a few standard patterns.';
             }
         }
