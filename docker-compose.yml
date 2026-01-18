@@ -1,0 +1,21 @@
+services:
+  app:
+    build: .
+    container_name: tricycle-app
+    environment:
+      NODE_ENV: production
+      PORT: 80
+      SESSION_SECRET: change-me-to-something-long
+    volumes:
+      - ./tricycle.db:/app/tricycle.db
+    networks:
+      labnet:
+        ipv4_address: 172.18.0.10
+    restart: unless-stopped
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16

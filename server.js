@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 const { initDb, get, run } = require('./db'); // <-- add
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
