@@ -49,6 +49,7 @@
           <div class="auth-card sleek-auth">
             <h2>Log in</h2>
 
+            <!-- LOGIN FORM -->
             <form id="loginForm" class="stack-form">
               <label>
                 Username
@@ -71,6 +72,26 @@
                 <a href="register.html">Create an account</a>
               </p>
             </form>
+
+            <!-- LOGGED-IN PANEL (hidden until you’re logged in) -->
+            <div id="loggedInPanel" class="stack-form" style="display:none;">
+              <p class="auth-message success" id="welcomeLine"></p>
+
+              <div style="display:flex; gap:0.75rem; margin-top: 0.75rem;">
+                <a class="btn-primary btn-primary--solid" href="index.html">Go to Home</a>
+                <button class="btn-primary btn-primary--ghost" id="logoutBtn" type="button">
+                  Logout
+                </button>
+              </div>
+
+              <p class="auth-switch" style="margin-top: 1rem;">
+                Want to switch accounts?
+                <button type="button" id="switchAccountBtn" class="btn-primary btn-primary--ghost">
+                  Use a different login
+                </button>
+              </p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -83,32 +104,100 @@
 
   <script src="js/main.js"></script>
   <script>
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    const loginForm = document.getElementById('loginForm');
+    const loggedInPanel = document.getElementById('loggedInPanel');
+    const loginMessage = document.getElementById('loginMessage');
+    const welcomeLine = document.getElementById('welcomeLine');
+    const authLink = document.getElementById('authLink');
+
+    function showLoggedIn(username) {
+      // Hide form, show panel
+      loginForm.style.display = 'none';
+      loggedInPanel.style.display = 'block';
+
+      // Message
+      welcomeLine.textContent = `Logged in as ${username}.`;
+
+      // Update nav link text (optional)
+      if (authLink) authLink.textContent = username;
+    }
+
+    function showLoginForm() {
+      loggedInPanel.style.display = 'none';
+      loginForm.style.display = 'block';
+      loginMessage.textContent = '';
+      loginMessage.className = 'auth-message';
+    }
+
+    async function checkSession() {
+      try {
+        const res = await fetch('/api/user');
+        const data = await res.json();
+
+        if (data.loggedIn) {
+          showLoggedIn(data.username);
+        } else {
+          showLoginForm();
+        }
+      } catch (e) {
+        // If /api/user fails, just keep the login form visible.
+        showLoginForm();
+      }
+    }
+
+    // On page load, if already logged in, show user info
+    checkSession();
+
+    // Handle login
+    loginForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-      const message  = document.getElementById('loginMessage');
 
       try {
-        const res  = await fetch('/api/login', {
+        const res = await fetch('/api/login', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username, password })
         });
+
         const data = await res.json();
 
         if (data.success) {
-          message.textContent = data.message + ' Redirecting...';
-          message.className = 'auth-message success';
-          setTimeout(() => window.location.href = 'index.html', 1200);
+          loginMessage.textContent = data.message;
+          loginMessage.className = 'auth-message success';
+
+          // Ask server who is logged in (session-based) and show it
+          await checkSession();
         } else {
-          message.textContent = data.message;
-          message.className = 'auth-message error';
+          loginMessage.textContent = data.message;
+          loginMessage.className = 'auth-message error';
         }
       } catch (err) {
-        message.textContent = 'Something went wrong. Please try again.';
-        message.className = 'auth-message error';
+        loginMessage.textContent = 'Something went wrong. Please try again.';
+        loginMessage.className = 'auth-message error';
+      }
+    });
+
+    // Logout
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      try {
+        await fetch('/api/logout', { method: 'POST' });
+      } finally {
+        // Reset nav text
+        if (authLink) authLink.textContent = 'Login';
+        showLoginForm();
+      }
+    });
+
+    // Switch account (logs out then shows form)
+    document.getElementById('switchAccountBtn').addEventListener('click', async () => {
+      try {
+        await fetch('/api/logout', { method: 'POST' });
+      } finally {
+        if (authLink) authLink.textContent = 'Login';
+        showLoginForm();
       }
     });
   </script>
