@@ -93,15 +93,74 @@ app.post('/api/logout', (req, res) => {
   });
 });
 
-app.get('/api/user', (req, res) => {
-  if (req.session.user) {
-    res.json({ loggedIn: true, username: req.session.user.username });
-  } else {
-    res.json({ loggedIn: false });
+app.get('/api/user', async (req, res) => {
+  try {
+    if (!req.session.user) return res.json({ loggedIn: false });
+
+    const user = await get(
+      `SELECT username, email, created_at FROM users WHERE id = ?`,
+      [req.session.user.id]
+    );
+
+    if (!user) return res.json({ loggedIn: false });
+
+    res.json({
+      loggedIn: true,
+      username: user.username,
+      email: user.email,
+      created_at: user.created_at
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ loggedIn: false });
   }
 });
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+});
+
+app.post('/api/change-password', async (req, res) => {
+  try {
+    if (!req.session.user) {
+      return res.status(401).json({ success: false, message: 'Not logged in' });
+    }
+
+    const { currentPassword, newPassword } = req.body;
+
+    if (!currentPassword || !newPassword) {
+      return res.json({ success: false, message: 'Missing required fields' });
+    }
+
+    if (newPassword.length < 8) {
+      return res.json({ success: false, message: 'New password must be at least 8 characters' });
+    }
+
+    const row = await get(
+      `SELECT password_hash FROM users WHERE id = ?`,
+      [req.session.user.id]
+    );
+
+    if (!row) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    const ok = await bcrypt.compare(currentPassword, row.password_hash);
+    if (!ok) {
+      return res.json({ success: false, message: 'Current password is incorrect' });
+    }
+
+    const newHash = await bcrypt.hash(newPassword, 10);
+
+    await run(
+      `UPDATE users SET password_hash = ? WHERE id = ?`,
+      [newHash, req.session.user.id]
+    );
+
+    res.json({ success: true, message: 'Password updated successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
 });
 

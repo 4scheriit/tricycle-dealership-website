@@ -10,7 +10,7 @@ services:
       - ./tricycle.db:/app/tricycle.db
     networks:
       labnet:
-        ipv4_address: 172.18.0.10
+        ipv4_address: 172.30.0.10
     restart: unless-stopped
 
 networks:
@@ -18,4 +18,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.18.0.0/16
+        - subnet: 172.30.0.0/16
